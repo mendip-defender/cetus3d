@@ -1,0 +1,153 @@
+-------------------- Log Start | Mon Apr 22 19:18:22 2024 --------------------
+data_path: /home/tier/printer_data
+is_default_data_path: False
+config_file: /home/tier/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 6b004d32f8f64057be641fbd2710932a
+unix_socket_path: /home/tier/printer_data/comms/moonraker.sock
+software_version: v0.8.0-204-gfb15b2a
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/tier/printer_data/logs/moonraker.log
+python_version: 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0]
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/tier/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[file_manager]
+
+[timelapse]
+output_path = ~/printer_data/timelapse/
+frame_path = /tmp/timelapse/printer
+
+#################################################################
+All Configuration Files:
+/home/tier/printer_data/config/moonraker.conf
+/home/tier/printer_data/machine/cetus2/moonraker.conf
+#################################################################
+Unsafe Shutdown Count: 89
+
+System Info:
+
+***python***
+  version: (3, 10, 12, 'final', 0)
+  version_string: 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 
+  hardware_desc: 
+  model: 
+  total_memory: 991612
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: ec
+  manufacturer: Unknown
+  oem_id: 2900
+  product_name: AT2S3
+  product_revision: 3.8
+  serial_number: 20075473
+  manufacturer_date: 10/2104
+  capacity: Unknown
+  total_bytes: 0
+
+***distribution***
+  name: Ubuntu 22.04.3 LTS
+  id: ubuntu
+  version: 22.04
+  version_parts: {'major': '22', 'minor': '04', 'build_number': ''}
+  like: debian
+  codename: jammy
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', 'network-online.target']
+**After=['network-online.target', 'sysinit.target', 'system.slice', '-.mount', 'basic.target', 'systemd-journald.socket']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/tier/printer_data/systemd/moonraker.env
+**ExecStart=/home/tier/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/tier/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=tier
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice']
+**After=['system.slice', 'basic.target', 'network-online.target', '-.mount', 'systemd-journald.socket', 'sysinit.target']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/tier/printer_data/systemd/klipper.env
+**ExecStart=/home/tier/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/tier/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=tier
+Klipper Version: v0.12.0-9-gbb4711c5-dirty
+2024-04-23 03:18:22,315 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2024-04-23 03:24:18,830 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
